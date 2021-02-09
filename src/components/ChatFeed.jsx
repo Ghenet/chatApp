@@ -24,7 +24,9 @@ const ChatFeed = (props) => {
                         isMyMessage ? <MyMessage /> : <TheirMessage />
                     }
                 </div>
-                <div className="read-receipts" style={{ marginRight: MyMessage ? '18px' : '0px', marginLeft: MyMessage ? '0px' : '68px'}}
+                <div className="read-receipts" style={{ marginRight: MyMessage ? '18px' : '0px', marginLeft: MyMessage ? '0px' : '68px'}}>
+                    read receipts
+                </div>
             </div>
             }
             )
@@ -34,8 +36,13 @@ const ChatFeed = (props) => {
     renderMessages();
 
 return (
-    <div>
-        Chatfeed
+    <div className="chat-feed">
+        <div className="chat-title-container">
+            <div className="chat-title">{chat.title}</div>
+            <div className="chat-subtitle">
+                {chat.people.map((person) => `${person.person.username}`)}
+            </div>
+        </div>
     </div>
 )
 }
