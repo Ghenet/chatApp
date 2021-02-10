@@ -1,4 +1,4 @@
-const TheidMessage = () => {
+const TheirMessage = () => {
     return (
         <div>
              Their Message
@@ -6,4 +6,4 @@ const TheidMessage = () => {
     );
 }
 
-export default TheidMessage;
+export default TheirMessage;
