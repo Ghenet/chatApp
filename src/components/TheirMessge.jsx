@@ -9,8 +9,22 @@ const TheirMessage = ({ lastMessage, message }) => {
                  style={{ backgroundImage: `url(${message?.sender?.avatar})`}}
                  />
              )}
+        {(message?.attachements?.length > 0) 
+        ? (
+            <img 
+            src={message.attachements[0].file}
+            alt="message-attahcement"
+            className="message-image"
+            style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }}
+            />
+        ) : (
+            <div className="message" style={{ float: 'left', backgroundColor: '#CABCDC', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
+                {message.text}
+            </div>
+        )
+        }
         </div>
     );
-}
+    }
 
 export default TheirMessage;
