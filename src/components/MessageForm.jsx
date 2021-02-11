@@ -34,6 +34,13 @@ const MessageForm = (props) => {
                   <PictureOutlined className="picture-icon" />
               </span>
           </label>
+          <input 
+                type="file"
+                multiple={false}
+                id="upload-button"
+                style={{ display: 'none' }}
+                onChange={handleUpload} 
+            />
       </form>
     );
 }
