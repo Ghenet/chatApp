@@ -1,4 +1,4 @@
-import { ConsoleSqlOutlined } from '@ant-design/icons';
+// import { ConsoleSqlOutlined } from '@ant-design/icons';
 import MessageForm from './MessageForm';
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessge';
@@ -7,7 +7,23 @@ const ChatFeed = (props) => {
     const { chats, activeChat, userName, messages } = props;
 
     const chat = chats && chats[activeChat];
+ //renders already read msgs
+ const renderReadReceipts = (message, isMyMessage) => {
+     chat.people.map((person, index)=> person.last_read === message.id && (
+         <div 
+            key={`read_${index}`}
+            className="read-receipt"
+            style ={{
+                float: isMyMessage ? 'right' : 'left',
+                backgroundImage: `url(${person?.person?.avatar})`
+            }}
+         />
+     ))
+ }
+
     
+
+    //renders msgs
     const renderMessages = () => {
         const keys = Object.keys(messages);
         // console.log(keys);
@@ -27,7 +43,7 @@ const ChatFeed = (props) => {
                     }
                 </div>
                 <div className="read-receipts" style={{ marginRight: MyMessage ? '18px' : '0px', marginLeft: MyMessage ? '0px' : '68px'}}>
-                    read receipts
+                    {renderReadReceipts(message, isMyMessage)}
                 </div>
             </div>
             );
