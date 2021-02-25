@@ -5,8 +5,21 @@ const LoginForm = () => {
     const [username, setUsername] = uUeState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit =  async (e) => {
+        e.preventDefault();
 
+        const authObject = { 'Project-ID': "fbb8b7c1-0993-4a83-822d-98e68f9a2699", 'User-Name': username, 'User-Secret': password }
+
+        try {
+             await axios.get('https://api.chatengine.io/chats', { headers: authObject });
+
+             localStorage.setItem('username', username);
+             localStorage.setItem('password', password);
+
+             window.location.reload();
+        } catch (error) {
+            
+        }
     }
 
     return (
@@ -29,3 +42,5 @@ const LoginForm = () => {
     
     )
 }
+
+export default LoginForm();
